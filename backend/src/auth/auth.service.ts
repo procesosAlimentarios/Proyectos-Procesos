@@ -8,27 +8,31 @@ import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
-    constructor(@InjectModel(Alumnos.name) private alumnosModel: Model<Alumnos>, private jwtSvc:JwtService) { }
+    constructor(@InjectModel(Alumnos.name) private alumnosModel: Model<Alumnos>, private jwtSvc: JwtService) { }
 
     async login(loginDto: LoginDto) {
         try {
 
             const user = await this.alumnosModel.findOne({ matricula: loginDto.username });
 
-            const {password,...rest} = user.toObject(); 
-
             if (!user) throw new NotFoundException("El usuario no se encutra registrado.");
-            
-            if (user.password === loginDto.password) return rest;
+
+            const { password, ...rest } = user.toObject();
+
+            const payload = {sub:user._id};
+
+            const token =  this.jwtSvc.sign(payload);
+
+            if(user.password === loginDto.password) return { user: rest, token };
 
             const isPasswordValis = await bcrypt.compare(loginDto.password, user.password);
 
             if (!isPasswordValis) throw new HttpException("La contraseña es incorrecta.", HttpStatus.UNAUTHORIZED);
 
-            return rest;
-
+            return { user: rest, token };
         } catch (error) {
             console.log(error);
+            throw new HttpException('Internal Server Error', HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

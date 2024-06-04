@@ -10,7 +10,7 @@ import { JwtModule } from '@nestjs/jwt';
     JwtModule.register({
       global:true,
       secret:"fhf fhslxo ahs",
-      signOptions: { expiresIn: '60m' },
+      signOptions: { expiresIn: '1d' },
     }),
     MongooseModule.forFeature([{name:Alumnos.name,schema:AlumnosSchema}])
   ],

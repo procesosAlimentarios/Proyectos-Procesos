@@ -1,7 +1,9 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ConflictException, NotFoundException } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ConflictException, NotFoundException, UseGuards } from '@nestjs/common';
 import { AlumnosService } from './alumnos.service';
 import { CreateAlumnoDto } from './dto/create-alumno.dto';
 import { UpdateAlumnoDto } from './dto/update-alumno.dto';
+import { AuthController } from 'src/auth/auth.controller';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @Controller('alumnos')
 export class AlumnosController {
@@ -30,6 +32,7 @@ export class AlumnosController {
   }
 
   @Patch(':id')
+  @UseGuards(AuthGuard) 
   async update(@Param('id') id: string, @Body() updateAlumnoDto: UpdateAlumnoDto) {
     try {
       const res = await this.alumnosService.update(id, updateAlumnoDto)
