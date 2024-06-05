@@ -1,7 +1,11 @@
 export const styles = {
     backgroundBeige:"#F2D98D",
-    backgroundOrange:"D9560B",
+    backgroundOrange:"#D9560B",
     backegroundNav:"#262626",
     btnNavBar:"#D9560B",
-    backegrounGreen:"#03A63C"
+    backegrounGreen:"#03A63C",
+    backgroundHome: "#D9560B",
+    backgroundRed :"#F21B1B",
+    backgroundAgregar: "#F29A2E",
+    backgroundEditar: "#BF24B5",
 }
