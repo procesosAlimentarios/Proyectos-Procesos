@@ -9,7 +9,7 @@ function EditarAditivo() {
 
     return (
         <div className='flex justify-center items-center h-full mt-20'>
-            <div className="border-purple-600 border-[5px] p-10 shadow-sm rounded-3xl" style={{ backgroundColor: backgroundColorWithTransparency }}>
+            <div className="border-orange-600 border-[5px] p-10 shadow-sm rounded-3xl" style={{ backgroundColor: backgroundColorWithTransparency }}>
                 <div className="flex items-center justify-center">
                     <p className="text-xl font-bold text-black text-center">Editar Aditivo</p>
                 </div>
