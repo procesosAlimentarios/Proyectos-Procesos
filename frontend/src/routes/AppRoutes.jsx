@@ -12,6 +12,7 @@ import AgregarNuevoEquipo from '../pages/admin/AgregarNuevoEquipo'
 
 import NotFound from '../pages/NotFound'
 import Header from '../components/Header'
+import AgregarNuevoMaterial from '../pages/admin/AgregarNuevoMaterial'
 
 const AppRoutes = () => {
     return (
@@ -29,6 +30,8 @@ const AppRoutes = () => {
                 <Route path='/EditarAlimento' element={<EditarAlimento/>}/>
 
                 <Route path='/AgregarEquipo' element={<AgregarNuevoEquipo/>}/>
+
+                <Route path='/AgregarMaterial' element={<AgregarNuevoMaterial/>}/>
 
             </Routes>
         </Router>
