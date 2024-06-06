@@ -8,6 +8,8 @@ import EditarAditivo from '../pages/admin/EditarAditivo'
 import AgregarNuevoAlimento from '../pages/admin/AgregarNuevoAlimento'
 import EditarAlimento from '../pages/admin/EditarAlimento'
 
+import AgregarNuevoEquipo from '../pages/admin/AgregarNuevoEquipo'
+
 import NotFound from '../pages/NotFound'
 import Header from '../components/Header'
 
@@ -25,6 +27,8 @@ const AppRoutes = () => {
 
                 <Route path='/AgregarAlimento' element={<AgregarNuevoAlimento/>}/>
                 <Route path='/EditarAlimento' element={<EditarAlimento/>}/>
+
+                <Route path='/AgregarEquipo' element={<AgregarNuevoEquipo/>}/>
 
             </Routes>
         </Router>
