@@ -6,6 +6,6 @@ export const styles = {
     backegrounGreen:"#03A63C",
     backgroundHome: "#D9560B",
     backgroundRed :"#F21B1B",
-    backgroundAgregar: "#F29A2E",
-    backgroundEditar: "#BF24B5",
+    backgroundAgregar: "#03A63C",
+    backgroundEditar: "#F29A2E",
 }
