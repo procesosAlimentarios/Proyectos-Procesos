@@ -14,6 +14,9 @@ import NotFound from '../pages/NotFound'
 import Header from '../components/Header'
 import AgregarNuevoMaterial from '../pages/admin/AgregarNuevoMaterial'
 import AgregarNuevoEquipo2 from '../pages/admin/AgregarNuevoEquipo2'
+import EditarEquipo from '../pages/admin/EditarEquipo'
+import EditarEquipo2 from '../pages/admin/EditarEquipo2'
+import EditarMaterial from '../pages/admin/EditarMaterial'
 
 const AppRoutes = () => {
     return (
@@ -31,10 +34,13 @@ const AppRoutes = () => {
                 <Route path='/EditarAlimento' element={<EditarAlimento/>}/>
 
                 <Route path='/AgregarEquipo' element={<AgregarNuevoEquipo/>}/>
+                <Route path='/EditarEquipo' element={<EditarEquipo/>}/>
 
                 <Route path='/AgregarMaterial' element={<AgregarNuevoMaterial/>}/>
+                <Route path='/EditarMaterial' element={<EditarMaterial/>}/>
 
                 <Route path='/AgregarEquipo2' element={<AgregarNuevoEquipo2/>}/>
+                <Route path='/EditarEquipo2' element={<EditarEquipo2/>}/>
 
             </Routes>
         </Router>
