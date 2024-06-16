@@ -1,11 +1,26 @@
-import Input from "../../components/Input"
+
 import { styles } from "../../assets/styles/global-styles"
 import { hexToRgba } from "../../assets/styles/hexToRgba"
+import { useForm } from "react-hook-form";
+import { Input } from "@nextui-org/react";
+
+
 
 function AgregarNuevoAditivo() {
     const { backegrounGreen } = styles;
     const { backgroundRed } = styles;
     const backgroundColorWithTransparency = hexToRgba(styles.backgroundAgregar, 0.5); // 0.5 es la transparencia deseada
+    const { register, formState: { errors }, handleSubmit, watch } = useForm();
+
+    const onSubmit = handleSubmit(async (values) => {
+        try {
+            console.log(values)
+        }
+        catch (error) {
+
+        }
+    });
+
 
     return (
         <div className='flex justify-center items-center h-full mt-20'>
@@ -14,14 +29,49 @@ function AgregarNuevoAditivo() {
                     <p className="text-xl font-bold text-black text-center">Agregar Nuevo Aditivo</p>
                 </div>
 
-                <div className="flex flex-col gap-4 my-10 paddin">
+                <form onSubmit={onSubmit} className="flex flex-col gap-4 my-10 paddin">
                     <div className="flex items-center justify-between ">
                         <p className='text-black w-32 font-semibold'>Nombre:</p>
-                        <Input type={"text"} placeholder={"Nombre aditivo"} className="flex-grow" />
+
+                        <Input
+                            label="Nombre Aditivo"
+                            variant="bordered"
+                            isInvalid={errors?.nombre ? true : false}
+                            errorMessage={errors?.nombre?.message}
+                            {
+                            ...register("nombre", {
+                                required: "El nombre es requerido",
+                                minLength: {
+                                    value: 3,
+                                    message: "El nombre debe contener al menos tres caracteres",
+                                },
+                                maxLength: {
+                                    value: 50,
+                                    message: "El nombre debe de contener la menos 50 caracteres"
+                                }
+                            })
+                            } />
                     </div>
                     <div className="flex items-center justify-between">
                         <p className='text-black w-32 font-semibold'>Cantidad:</p>
-                        <Input type={"password"} placeholder={"Cantidad aditivo"} className="flex-grow text-black" />
+                        <Input
+                            label="Cantidad Aditivo"
+                            variant="bordered"
+                            isInvalid={errors?.cantidad ? true : false}
+                            errorMessage={errors?.cantidad?.message}
+                            {
+                            ...register("cantidad", {
+                                required: "La cantidad es requerido",
+                                min: {
+                                    value: 1,
+                                    message: "La minima cantidad es de 1",
+                                },
+                                max: {
+                                    value: 100,
+                                    message: "La cantidad maxima es 100"
+                                }
+                            })
+                            } />
                     </div>
                     <div className="flex items-center justify-center gap-4">
                         <button style={{ backgroundColor: backgroundRed }} className='text-white rounded-md p-2 font-semibold w-32'>
@@ -32,7 +82,7 @@ function AgregarNuevoAditivo() {
                         </button>
                     </div>
 
-                </div>
+                </form>
 
             </div>
         </div>

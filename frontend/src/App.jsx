@@ -1,12 +1,14 @@
+import { NextUIProvider } from "@nextui-org/react"
 import AppRoutes from "./routes/AppRoutes"
+
 
 
 function App() {
 
   return (
-    <div >
+    <NextUIProvider>
       <AppRoutes/>
-    </div>
+    </NextUIProvider>
   )
 }
 
