@@ -3,25 +3,25 @@ import Input from "../../components/Input"
 
 function EquiposLaboratorio() {
     const { backgroundBlue, backgroundRed } = styles;
-  return (
-    <div className="overflow-x-auto">
-      <div className="flex justify-start items-center h-24 mt-20 bg-green-200 my-2">
-        <p className="ml-16 text-left font-bold text-3xl">Equipos de Laboratorio</p>
-        <button className="ml-auto mr-16 bg-green-500 text-white font-bold py-3 px-9 text-lg rounded">
-          Nuevo Equipo
-        </button>
-      </div>
+    return (
+        <div className="overflow-x-auto">
+            <div className="flex justify-start items-center h-24 mt-20 bg-green-200 my-2">
+                <p className="ml-16 text-left font-bold text-3xl">Equipos de Laboratorio</p>
+                <button className="ml-auto mr-16 bg-green-500 text-white font-bold py-3 px-9 text-lg rounded">
+                    Nuevo Equipo
+                </button>
+            </div>
 
-      <div className="flex justify-center items-center h-20 bg-purple-200 my-2">
-        <p className="text-left font-bold text-xl mx-4">Buscar Equipo</p>
-        <Input type="text" placeholder="Nombre Equipo" className="flex-grow mx-4" />
-        <button className="bg-black text-white font-bold py-3 px-6 text-lg rounded mx-4">
-          Buscar
-        </button>
-      </div>
+            <div className="flex justify-center items-center h-20 bg-purple-200 my-2">
+                <p className="text-left font-bold text-xl mx-4">Buscar Equipo</p>
+                <Input type="text" placeholder="Nombre Equipo" className="flex-grow mx-4" />
+                <button className="bg-black text-white font-bold py-3 px-6 text-lg rounded mx-4">
+                    Buscar
+                </button>
+            </div>
 
 
-      <div className="w-full flex justify-center mt-6">
+            <div className="w-full flex justify-center mt-6">
                 <div className="w-full max-w-4xl">
                     <table className="min-w-full divide-y divide-gray-200 border-4 border-black">
                         <thead className="bg-gray-50">
@@ -77,8 +77,8 @@ function EquiposLaboratorio() {
                     </table>
                 </div>
             </div>
-    </div>
-  )
+        </div>
+    )
 }
 
 export default EquiposLaboratorio
