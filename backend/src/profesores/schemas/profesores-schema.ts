@@ -12,8 +12,7 @@ export class Profesores {
     })
     nombre: string;
     @Prop({
-        type:Types.ObjectId,
-        ref:Asignaturas.name,
+        type: [{ type: Types.ObjectId, ref: Asignaturas.name }],
         required: true,
     })
     materias:Types.ObjectId[];

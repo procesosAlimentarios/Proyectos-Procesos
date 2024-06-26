@@ -1,7 +1,7 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ConflictException, NotFoundException, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ConflictException, NotFoundException, UseGuards, HttpException, HttpStatus } from '@nestjs/common';
 import { AlumnosService } from './alumnos.service';
 import { CreateAlumnoDto } from './dto/create-alumno.dto';
-import { UpdateAlumnoDto } from './dto/update-alumno.dto';
+import { ChangePasswordDto, UpdateAlumnoDto } from './dto/update-alumno.dto';
 import { AuthController } from 'src/auth/auth.controller';
 import { AuthGuard } from 'src/auth/auth.guard';
 
@@ -32,7 +32,7 @@ export class AlumnosController {
   }
 
   @Patch(':id')
-  @UseGuards(AuthGuard) 
+  @UseGuards(AuthGuard)
   async update(@Param('id') id: string, @Body() updateAlumnoDto: UpdateAlumnoDto) {
     try {
       const res = await this.alumnosService.update(id, updateAlumnoDto)
@@ -41,6 +41,22 @@ export class AlumnosController {
     } catch (error) {
       if (error.code === 11000) throw new ConflictException("La matricula ya esta en uso");
       throw error;
+    }
+
+  }
+
+  @Patch("/changePassword/:id")
+  // @UseGuards(AuthGuard)
+  async changePassword(@Param("id") id: string, @Body() changePasswordVal: ChangePasswordDto) {
+    try {
+      const res = await this.alumnosService.changePassword(id, changePasswordVal);
+      if (!res) throw new NotFoundException("El alumno no se encuentra registrado.");
+      return res;
+    } catch (error) {
+      if (error instanceof HttpException) {
+        throw error;
+      }
+      throw new HttpException('Error interno del servidor', HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
   }

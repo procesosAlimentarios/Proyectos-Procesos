@@ -1,7 +1,19 @@
-import { IsDate, IsMongoId, IsNotEmpty, IsOptional, IsString, MaxLength, MinLength } from "class-validator";
+import { Type } from "class-transformer";
+import { IsArray, IsBoolean, IsDate, IsMongoId, IsNotEmpty, IsNumber, IsObject, IsOptional, IsString, MaxLength, MinLength, ValidateNested } from "class-validator";
 import { Types } from "mongoose";
 
-export class CreatePracticaDto {
+class MaterialDto {
+    @IsNotEmpty()
+    @IsString()
+    _id:String;
+
+    @IsNotEmpty()
+    @IsNumber()
+    cantidad:number;
+}
+
+
+export class CreatePrestamosDto {
     @IsString()
     @IsNotEmpty()
     @MinLength(2)
@@ -26,8 +38,11 @@ export class CreatePracticaDto {
     @MaxLength(60)
     nombrePractica:string;
 
-    @IsOptional()
-    fecha:Date;
+    @IsNotEmpty()
+    @IsString()
+    @MinLength(10)
+    @MaxLength(10)
+    fecha:string;
 
     @IsString()
     @IsNotEmpty()
@@ -48,6 +63,20 @@ export class CreatePracticaDto {
     horaMaterialRequerido:string;
 
     @IsNotEmpty()
-    @IsString({each:true})
-    materiales:string[];
+    @IsArray()
+    @ValidateNested({each: true})
+    @Type(()=>MaterialDto)
+    materiales:MaterialDto[];
+
+    @IsOptional()
+    @IsBoolean()
+    aceptado: boolean;
+
+    @IsOptional()
+    @IsBoolean()
+    devuelto:boolean;
+
+    @IsOptional()
+    @IsBoolean()
+    entregado:boolean;
 }

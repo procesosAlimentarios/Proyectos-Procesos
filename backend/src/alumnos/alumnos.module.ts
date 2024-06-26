@@ -6,10 +6,14 @@ import { Alumnos, AlumnosSchema } from './schemas/alumno-schema';
 import { AuthModule } from 'src/auth/auth.module';
 import { AuthController } from 'src/auth/auth.controller';
 import { AuthService } from 'src/auth/auth.service';
+import { AdminModule } from 'src/admin/admin.module';
+import { AdminController } from 'src/admin/admin.controller';
+import { AdminService } from 'src/admin/admin.service';
 
 @Module({
-  imports:[AuthModule,MongooseModule.forFeature([{name:Alumnos.name,schema:AlumnosSchema}])],
-  controllers: [AlumnosController,AuthController],
-  providers: [AlumnosService,AuthService],
+  imports:[AuthModule,AdminModule,MongooseModule.forFeature([{name:Alumnos.name,schema:AlumnosSchema}])],
+  controllers: [AlumnosController,AuthController,AdminController],
+  providers: [AlumnosService,AuthService,AdminService],
+  exports:[MongooseModule]
 })
 export class AlumnosModule {}

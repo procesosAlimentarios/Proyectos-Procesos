@@ -1,12 +1,20 @@
+import { NextUIProvider } from "@nextui-org/react";
+import { AuthProvider } from "./context/auth-context"
 import AppRoutes from "./routes/AppRoutes"
-
+import { BrowserRouter as Router } from 'react-router-dom';
 
 function App() {
 
   return (
-    <div >
-      <AppRoutes/>
-    </div>
+    <AuthProvider >
+      <NextUIProvider>
+        <Router>
+          <AppRoutes />
+        </Router>
+      </NextUIProvider>
+    </AuthProvider>
+
+
   )
 }
 

@@ -4,7 +4,6 @@ import { UpdateAsignaturaDto } from './dto/update-asignatura.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Asignaturas } from './schemas/asignatura-schema';
 import { Model } from 'mongoose';
-
 @Injectable()
 export class AsignaturasService {
 

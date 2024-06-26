@@ -1,22 +1,25 @@
 import { Module } from '@nestjs/common';
-import { PracticasService } from './practicas.service';
-import { PracticasController } from './practicas.controller';
+import { PrestamosService } from './prestamos.service';
+import { PracticasController } from './prestamos.controller';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Practica, PracticaSchema } from './schema/practicas-schema';
+import { Prestamos, PrestamosSchema } from './schema/prestamos-schema';
 import { Aditivos, AditivosSchema } from 'src/aditivos/schemas/aditivo.schema';
 import { MaterialesLab, MaterialesLabSchema } from 'src/material-lab/schemas/material-lab-schema';
 import { MaterialesAlmacenSchema,MaterialesAlmacen } from 'src/material-inventario/schema/material-almacen';
+import { EquiposLab, SchemaEquiposLab } from 'src/equipos-lab/schema/equipos-lab-schema';
+import { EquiposTaller, EquiposTallerSchema } from 'src/equipos-taller/schema/equipos-taller-schema';
 
 @Module({
   imports: [MongooseModule.forFeature([
-    { name: Practica.name, schema: PracticaSchema },
+    { name: Prestamos.name, schema: PrestamosSchema },
     { name: Aditivos.name, schema: AditivosSchema },
     { name: MaterialesLab.name, schema: MaterialesLabSchema },
     { name: MaterialesAlmacen.name, schema: MaterialesAlmacenSchema },
-   
+    { name: EquiposLab.name, schema: SchemaEquiposLab },
+    { name: EquiposTaller.name, schema: EquiposTallerSchema },
   ]
   )],
   controllers: [PracticasController],
-  providers: [PracticasService],
+  providers: [PrestamosService],
 })
 export class PracticasModule { }

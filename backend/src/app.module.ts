@@ -9,14 +9,15 @@ import { MaterialInventarioModule } from './material-inventario/material-inventa
 import { AditivosModule } from './aditivos/aditivos.module';
 import { EquiposTallerModule } from './equipos-taller/equipos-taller.module';
 import { EquiposLabModule } from './equipos-lab/equipos-lab.module';
-import { PracticasModule } from './practicas/practicas.module';
+import { PracticasModule } from './prestamos/prestamos.module';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
+import { AdminModule } from './admin/admin.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forRoot(process.env.MONGODB_URI), AsignaturasModule, ProfesoresModule, AlumnosModule, MaterialLabModule, MaterialInventarioModule, AditivosModule, EquiposTallerModule, EquiposLabModule, PracticasModule, AuthModule],
+    MongooseModule.forRoot(process.env.MONGODB_URI), AsignaturasModule, ProfesoresModule, AlumnosModule, MaterialLabModule, MaterialInventarioModule, AditivosModule, EquiposTallerModule, EquiposLabModule, PracticasModule, AuthModule, AdminModule],
   controllers: [],
   providers: [AppService],
 })

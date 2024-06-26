@@ -6,7 +6,10 @@ import { Profesores, ProfesoresSchema } from './schemas/profesores-schema';
 import { AsignaturaSchema, Asignaturas } from 'src/asignaturas/schemas/asignatura-schema';
 
 @Module({
-  imports:[MongooseModule.forFeature([{name:Profesores.name,schema:ProfesoresSchema},{name:Asignaturas.name,schema:AsignaturaSchema}])],
+  imports: [
+    MongooseModule.forFeature([{ name: Profesores.name, schema: ProfesoresSchema }]),
+    MongooseModule.forFeature([{ name: Asignaturas.name, schema: AsignaturaSchema }]),
+],
   controllers: [ProfesoresController],
   providers: [ProfesoresService],
 })

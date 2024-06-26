@@ -18,9 +18,9 @@ export class ProfesoresService {
     return res;
   }
 
-  async findAll():Promise<Profesores[]> {
-    return this.profesoresModel.find().populate('materias', "nombre cuatrimestre",Asignaturas.name);
-  }
+  async findAll(): Promise<Profesores[]> {
+    return this.profesoresModel.find().populate("materias","nombre cuatrimestre",Asignaturas.name)
+}
 
   async findOne(id: string):Promise<Profesores> {
     return this.profesoresModel.findById(id).populate("materias","nombre cuatrimestre",Asignaturas.name);

@@ -7,6 +7,19 @@ export interface MaterialAlmacen {
     updatedAt:Date;
     // otras propiedades...
   }
+
+  export interface EquiposLaboratorio {
+    _id: string;
+    nombre: string;
+    noInventario:string;
+    cantidad:number;
+  }
+  export interface EquiposTallerInterface {
+    _id: string;
+    nombre: string;
+    cantidad:number;
+    noInventario:string;
+  }
   
  export interface MaterialLab {
     _id: string;
@@ -34,10 +47,13 @@ export interface Aditivo {
     profesor: string;
     alumno: string;
     nombrePractica:string;
-    fecha:Date;
+    fecha:string;
     horaEntregaSolicitud:string;
     fechaMaterialRequerido:string;
     horaMaterialRequerido:string;
+    aceptado?: boolean;
+    entregado:boolean;
+    devuelto:boolean;
     createdAt:Date;
     updatedAt:Date;
     // otras propiedades...

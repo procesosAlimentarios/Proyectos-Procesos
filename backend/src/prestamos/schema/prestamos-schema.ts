@@ -4,28 +4,34 @@ import { Alumnos } from "src/alumnos/schemas/alumno-schema";
 import { Asignaturas } from "src/asignaturas/schemas/asignatura-schema";
 import { Profesores } from "src/profesores/schemas/profesores-schema";
 
+export interface Material {
+    _id:string;
+    cantidad:number;
+}
+
+
 @Schema({
     timestamps: true,
 })
-export class Practica {
+export class Prestamos {
     @Prop({
         required: true,
         type: Types.ObjectId,
-        ref: Asignaturas.name, 
+        ref: Asignaturas.name,
     })
     asignatura: Types.ObjectId;
 
     @Prop({
         required: true,
         type: Types.ObjectId,
-        ref: Profesores.name, 
+        ref: Profesores.name,
     })
     profesor: Types.ObjectId;
 
     @Prop({
         required: true,
         type: Types.ObjectId,
-        ref: Alumnos.name, 
+        ref: Alumnos.name,
     })
     alumno: Types.ObjectId;
 
@@ -37,9 +43,8 @@ export class Practica {
 
     @Prop({
         trim: true,
-        default: new Date(),
     })
-    fecha: Date;
+    fecha: string;
 
     @Prop({
         required: true,
@@ -61,9 +66,22 @@ export class Practica {
 
     @Prop({
         required: true,
-      })
-      materiales:string[]; 
+    })
+    materiales: Material[];
+    
+    @Prop()
+    aceptado: boolean;
+
+    @Prop({
+        default: false
+    })
+    devuelto: boolean;
+
+    @Prop({
+        default: false
+    })
+    entregado:boolean;
 }
 
-export const PracticaSchema = SchemaFactory.createForClass(Practica);
+export const PrestamosSchema = SchemaFactory.createForClass(Prestamos);
 
