@@ -1,12 +1,18 @@
-import { styles } from "../../assets/styles/global-styles";
-import Input from "../../components/Input";
+import { styles } from "../../../assets/styles/global-styles";
+import Input from "../../../components/Input";
 
+//Aditivos
+/**
+ * AgregarAditivo.jsx
+ * EditarAditivo.jsx
+ * @returns 
+ */
 function MaterialAditivos() {
   const { backgroundBlue, backgroundRed } = styles;
 
   return (
     <div className="overflow-x-auto">
-      <div className="flex justify-start items-center h-24 mt-20 bg-green-200 my-2">
+      <div className="flex justify-start items-center h-24  bg-green-200 my-2">
         <p className="ml-16 text-left font-bold text-3xl">Material de Aditivos Almacen</p>
         <button className="ml-auto mr-16 bg-green-500 text-white font-bold py-3 px-9 text-lg rounded">
           Nuevo Material

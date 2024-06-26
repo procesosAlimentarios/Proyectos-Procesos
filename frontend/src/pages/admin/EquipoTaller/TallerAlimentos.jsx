@@ -1,6 +1,13 @@
-import { styles } from "../../assets/styles/global-styles"
-import Input from "../../components/Input";
+import { styles } from "../../../assets/styles/global-styles"
+import Input from "../../../components/Input";
 
+
+//Taller
+/**
+ * AgregarEquipoTaller.jsx
+ * EditarEquipoTaller.jsx
+ * @returns 
+ */
 function TallerAlimentos() {
     const { backgroundBlue, backgroundRed } = styles;
     return (
@@ -27,7 +34,7 @@ function TallerAlimentos() {
                             <tr>
                                 <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider border-4 border-black">Nombre</th>
                                 <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider border-4 border-black">N° Inventario</th>
-                                <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider border-4 border-black">Existencia</th>
+                                <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider border-4 border-black">Estado</th>
                                 <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider border-4 border-black">Acciones</th>
                             </tr>
                         </thead>

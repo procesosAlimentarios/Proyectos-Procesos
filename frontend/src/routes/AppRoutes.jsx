@@ -1,28 +1,29 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+
 import Home from '../pages/Home'
-
-import MaterialAditivos from '../pages/admin/MaterialAditivos'
-import AgregarNuevoAditivo from '../pages/admin/AgregarNuevoAditivo'
-import EditarAditivo from '../pages/admin/EditarAditivo'
-
-import MaterialAlmacenAlimentos from '../pages/admin/MaterialAlmacenAlimentos'
-import AgregarNuevoAlimento from '../pages/admin/AgregarNuevoAlimento'
-import EditarAlimento from '../pages/admin/EditarAlimento'
-
-import EquiposLaboratorio from '../pages/admin/EquiposLaboratorio'
-import AgregarNuevoEquipo from '../pages/admin/AgregarNuevoEquipo'
-
 import NotFound from '../pages/NotFound'
 import Header from '../components/Header'
 
-import MaterialLaboratorio from '../pages/admin/MaterialLaboratorio'
-import AgregarNuevoMaterial from '../pages/admin/AgregarNuevoMaterial'
+import AgregarAditivo from '../pages/admin/Aditivo/AgregarAditivo'
+import EditarAditivo from '../pages/admin/Aditivo/EditarAditivo'
+import MaterialAditivos from '../pages/admin/Aditivo/MaterialAditivos'
 
-import TallerAlimentos from '../pages/admin/TallerAlimentos'
-import AgregarNuevoEquipo2 from '../pages/admin/AgregarNuevoEquipo2'
-import EditarEquipo from '../pages/admin/EditarEquipo'
-import EditarEquipo2 from '../pages/admin/EditarEquipo2'
-import EditarMaterial from '../pages/admin/EditarMaterial'
+import AgregarAlimento from '../pages/admin/Alimento/AgregarAlimento'
+import EditarAlimento from '../pages/admin/Alimento/EditarAlimento'
+import MaterialAlimentos from '../pages/admin/Alimento/MaterialAlimentos'
+
+import AgregarEquipoLab from '../pages/admin/EquipoLab/AgregarEquipoLab'
+import EditarEquipoLab from '../pages/admin/EquipoLab/EditarEquipoLab'
+import EquiposLab from '../pages/admin/EquipoLab/EquiposLab'
+
+import AgregarEquipoTaller from '../pages/admin/EquipoTaller/AgregarEquipoTaller'
+import EditarEquipoTaller from '../pages/admin/EquipoTaller/EditarEquipoTaller'
+import TallerAlimentos from '../pages/admin/EquipoTaller/TallerAlimentos'
+
+import AgregarMaterialLab from '../pages/admin/MaterialLab/AgregarMaterialLab'
+import EditarMaterialLab from '../pages/admin/MaterialLab/EditarMaterialLab'
+import MaterialLab from '../pages/admin/MaterialLab/MaterialLab'
+
 
 const AppRoutes = () => {
     return (
@@ -32,26 +33,26 @@ const AppRoutes = () => {
                 <Route path='/' element={<Home />} />
                 <Route path='*' element={<NotFound />} />
 
-                <Route path='/MaterialAditivo' element={<MaterialAditivos />} />
-                <Route path='/AgregarAditivo' element={<AgregarNuevoAditivo />} />
-                <Route path='/EditarAditivo' element={<EditarAditivo />} />
+                <Route path='/AgregarAditivo' element={<AgregarAditivo/>}/>
+                <Route path='/EditarAditivo' element={<EditarAditivo/>}/>
+                <Route path='/MaterialAditivo' element={<MaterialAditivos/>}/>
 
-                <Route path='/MaterialAlmacenAlimento' element={<MaterialAlmacenAlimentos/>}/>
-                <Route path='/AgregarAlimento' element={<AgregarNuevoAlimento />} />
-                <Route path='/EditarAlimento' element={<EditarAlimento />} />
+                <Route path='/AgregarAlimento' element={<AgregarAlimento/>}/>
+                <Route path='/EditarAlimento' element={<EditarAlimento/>}/>
+                <Route path='/MaterialAlimentos' element={<MaterialAlimentos/>}/>
 
-                <Route path='/EquiposLaboratorio' element={<EquiposLaboratorio/>}/>
-                <Route path='/AgregarEquipo' element={<AgregarNuevoEquipo />} />
-                <Route path='/EditarEquipo' element={<EditarEquipo />} />
+                <Route path='/AgregarEquipoLab' element={<AgregarEquipoLab/>}/>
+                <Route path='/EditarEquipoLab' element={<EditarEquipoLab/>}/>
+                <Route path='/EquiposLab' element={<EquiposLab/>}/>
 
-                <Route path='/MaterialLaboratorio' element={<MaterialLaboratorio/>}/>
-                <Route path='/AgregarMaterial' element={<AgregarNuevoMaterial />} />
-                <Route path='/EditarMaterial' element={<EditarMaterial />} />
+                <Route path='/AgregarEquipoTaller' element={<AgregarEquipoTaller/>}/>
+                <Route path='/EditarEquipoTaller' element={<EditarEquipoTaller/>}/>
+                <Route path='/TallerAlimentos' element={<TallerAlimentos/>}/>
 
-                <Route path='/TallerAlimento' element={<TallerAlimentos/>}/>
-                <Route path='/AgregarEquipo2' element={<AgregarNuevoEquipo2 />} />
-                <Route path='/EditarEquipo2' element={<EditarEquipo2 />} />
-
+                <Route path='/AgregarMaterialLab' element={<AgregarMaterialLab/>}/>
+                <Route path='/EditarMaterialLab' element={<EditarMaterialLab/>}/>
+                <Route path='/MaterialLab' element={<MaterialLab/>}/>
+              
             </Routes>
         </Router>
     )

@@ -1,8 +1,13 @@
-import { styles } from "../../assets/styles/global-styles"
-import Input from "../../components/Input"
+import { styles } from "../../../assets/styles/global-styles"
+import Input from "../../../components/Input"
 
-
-function MaterialLaboratorio() {
+//MaterialLab
+/**
+ * AgregarMaterialLab.jsx
+ * EditarMaterialLab.jsx
+ * @returns 
+ */
+function MaterialLab() {
     const { backgroundBlue, backgroundRed } = styles;
   return (
     <div className="overflow-x-auto">
@@ -78,4 +83,4 @@ function MaterialLaboratorio() {
   )
 }
 
-export default MaterialLaboratorio
+export default MaterialLab
