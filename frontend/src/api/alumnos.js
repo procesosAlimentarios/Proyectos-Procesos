@@ -2,7 +2,7 @@ import axios from "./axios"
 
 export const getAllAlumnos = () => axios.get("/alumnos");
 
-export const createAlumno = () => axios.post("/alumnos");
+export const createAlumno = (data) => axios.post("/alumnos",data);
 
 export const getAlumnoById = (id) => axios.get(`/alumnos/${id}`)
 

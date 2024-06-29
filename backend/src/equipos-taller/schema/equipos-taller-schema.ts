@@ -14,9 +14,9 @@ export class EquiposTaller{
 
     @Prop({
         required: true,
-        trim: true,
+        default: false
     })
-    noInventario: string;
+    enUso: boolean;
 
     @Prop({
         required: true,

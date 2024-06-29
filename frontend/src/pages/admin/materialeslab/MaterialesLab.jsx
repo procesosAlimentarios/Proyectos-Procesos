@@ -3,13 +3,13 @@ import React, { useEffect } from "react";
 import { CiSearch } from "react-icons/ci";
 import { Toaster, toast } from 'sonner';
 import { CircularProgress } from "@nextui-org/react";
-import { deleteAditivo, getAllAditivos } from "../../../api/materiales";
+import { deleteAditivo, deleteMaterialLab, getAllAditivos, getAllMaterialLab } from "../../../api/materiales";
 import { CiEdit } from "react-icons/ci";
 import ModalDeleteItem from "../../../components/ModalDeleteItem";
 import { IoMdAdd } from "react-icons/io";
 import { GoListOrdered } from "react-icons/go";
 import {useNavigate} from "react-router-dom"
-const Lista = () => {
+const MaterialesLab = () => {
     const [data, setData] = React.useState([]);
     const [loaded, setLoaded] = React.useState(true);
     const [filteredData, setFilteredData] = React.useState([]);
@@ -26,8 +26,8 @@ const Lista = () => {
     }, [page, filteredData]);
 
     useEffect(() => {
-        const getAditivos = async () => {
-            const res = await getAllAditivos();
+        const getMateriales = async () => {
+            const res = await getAllMaterialLab();
             if (res) {
                 setLoaded(false);
                 setData(res.data);
@@ -35,7 +35,7 @@ const Lista = () => {
             }
             setLoaded(false);
         };
-        getAditivos();
+        getMateriales();
     }, []);
 
     useEffect(() => {
@@ -69,9 +69,9 @@ const Lista = () => {
 
     const handleDelete = async (id) => {
         try {
-            const res = await deleteAditivo(id);
+            const res = await deleteMaterialLab(id);
             if (res) {
-                toast.success("Aditivo eliminado correctamente.");
+                toast.success("Material eliminado correctamente.");
                 setData(data.filter(item => item._id !== id));
             }
         } catch (error) {
@@ -96,7 +96,7 @@ const Lista = () => {
             <div className="w-full mb-2">
                 <div className="flex justify-between items-center max-w-[900px] m-auto">
                     <div className="flex w-full gap-10">
-                        <p className="text-center text-2xl font-bold ">Aditivos</p>
+                        <p className="text-center text-2xl font-bold ">Materiales laboratorio</p>
 
                         <Input
                             isClearable
@@ -138,7 +138,9 @@ const Lista = () => {
                                 </DropdownItem>
                             </DropdownMenu>
                         </Dropdown>
-                        <Button className="" variant="flat" onClick={()=>navigate("/agregar-aditivo")} >
+                        <Button className="" variant="flat" 
+                            onClick={()=> navigate("/agregar-material-lab")}
+                        >
                             <Tooltip content="Agregar">
                                 <span>
                                     <IoMdAdd className=" text-2xl " />
@@ -155,7 +157,7 @@ const Lista = () => {
                     data.length === 0 ?
                         (
                             <div className="flex justify-center items-center h-52">
-                                <p className="mt-10 font-bold text-gray-500">No cuentas con ningun aditivo.</p>
+                                <p className="mt-10 font-bold text-gray-500">No cuentas con ningun material.</p>
                             </div>
                         ) : filteredData.length === 0 ?
                             <div className="flex justify-center items-center h-52">
@@ -192,7 +194,7 @@ const Lista = () => {
                                     </TableColumn>
                                     <TableColumn
                                         className="text-center font-bold text-sm"
-                                        key="cantidad"
+                                        key="existencias"
                                     >
                                         Cantidad
                                     </TableColumn>
@@ -239,4 +241,4 @@ const Lista = () => {
     );
 };
 
-export default Lista;
+export default MaterialesLab;

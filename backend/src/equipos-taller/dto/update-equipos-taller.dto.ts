@@ -1,15 +1,15 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { CreateEquiposTallerDto } from './create-equipos-taller.dto';
-import { IsOptional, IsString } from 'class-validator';
+import { IsBoolean, IsOptional, IsString } from 'class-validator';
 
 export class UpdateEquiposTallerDto extends PartialType(CreateEquiposTallerDto) {
     @IsString()
     @IsOptional()
     nombre: string;
 
-    @IsString()
+    @IsBoolean()
     @IsOptional()
-    noInventario: string;
+    enUso: boolean;
 
     @IsString()
     @IsOptional()

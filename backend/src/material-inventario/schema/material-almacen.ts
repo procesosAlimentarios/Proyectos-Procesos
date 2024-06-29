@@ -17,12 +17,6 @@ export class MaterialesAlmacen{
         required: true,
     })
     existencias:number;
-
-    @Prop({
-        required: true,
-        trim: true
-    })
-    noInventario:string;
 };
 
 export const MaterialesAlmacenSchema = SchemaFactory.createForClass(MaterialesAlmacen);

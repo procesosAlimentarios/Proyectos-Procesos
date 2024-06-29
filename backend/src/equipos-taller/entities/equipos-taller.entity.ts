@@ -1,5 +1,5 @@
 export class EquiposTaller {
     nombre: string;
-    noInventario: string;
+    enUso: boolean;
     estado: string;
 }

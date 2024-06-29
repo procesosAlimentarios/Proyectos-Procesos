@@ -1,11 +1,11 @@
 import axios from "./axios";
 
-const createAsignatura = (data) => axios.post("/asignaturas",data);
+export const createAsignatura = (data) => axios.post("/asignaturas",data);
 
-const getAllAsignaturas = () => axios.get("/asignaturas");
+export const getAllAsignaturas = () => axios.get("/asignaturas");
 
-const getAsignaturaById = id => axios.get(`/asignaturas/${id}`);
+export const getAsignaturaById = id => axios.get(`/asignaturas/${id}`);
 
-const updateAsignatura = (id,data) => axios.patch(`/asignaturas/${id}`,data);
+export const updateAsignatura = (id,data) => axios.patch(`/asignaturas/${id}`,data);
 
-const deleteAsignatura = (id) => axios.delete(`/asignaturas/${id}`);
+export const deleteAsignatura = (id) => axios.delete(`/asignaturas/${id}`);

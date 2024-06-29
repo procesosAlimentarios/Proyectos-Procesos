@@ -11,6 +11,7 @@ export class AlumnosController {
 
   @Post()
   async create(@Body() createAlumnoDto: CreateAlumnoDto) {
+    console.log(createAlumnoDto)
     try {
       return await this.alumnosService.create(createAlumnoDto);
     } catch (error) {

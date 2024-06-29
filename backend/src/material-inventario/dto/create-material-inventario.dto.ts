@@ -12,10 +12,4 @@ export class CreateMaterialInventarioDto {
     @Min(0)
     @Max(100)
     existencias:number;
-
-    @IsString()
-    @IsNotEmpty()
-    @MinLength(3)
-    @MaxLength(20)
-    noInventario:string;
 }

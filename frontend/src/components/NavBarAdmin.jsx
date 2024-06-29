@@ -31,8 +31,8 @@ const NavBarAdmin = () => {
                     </button>
                     <div className="flex flex-col items-center gap-10 text-white" onClick={() => setFlag(false)}>
                         <NavLink to={"/inicio"}>Inicio</NavLink>
-                        <NavLink to={"/cambiar-password"}>Asignaturas</NavLink>
-                        <NavLink to={"/solicitar-material"}>Docentes</NavLink>
+                        <NavLink to={"/asignaturas"}>Asignaturas</NavLink>
+                        <NavLink to={"/docentes"}>Docentes</NavLink>
                         <NavLink to={"/alumnos"}>Alumnos</NavLink>
                         <Dropdown>
                             <NavbarItem>
@@ -63,6 +63,12 @@ const NavBarAdmin = () => {
                                 <DropdownItem onClick={() => navigate("/materialesAlmacen")}>
                                     Materiales de almacen
                                 </DropdownItem>
+                                <DropdownItem onClick={() => navigate("/equipos-taller")}>
+                                    Equipos taller
+                                </DropdownItem>
+                                <DropdownItem onClick={() => navigate("/equipos-lab")}>
+                                    Equipos laboratorio
+                                </DropdownItem>
 
                             </DropdownMenu>
                         </Dropdown>
@@ -88,16 +94,16 @@ const NavBarAdmin = () => {
                                 }}
                             >
                                 <DropdownItem onClick={() => navigate("/prestamos")}>
-                                        Todos
+                                    Todos
                                 </DropdownItem>
                                 <DropdownItem onClick={() => navigate("/solicitar-material")} >
-                                        Por Aceptar
+                                    Por Aceptar
                                 </DropdownItem>
                                 <DropdownItem onClick={() => navigate("/entregas")} >
-                                        Por entregar
+                                    Por entregar
                                 </DropdownItem>
                                 <DropdownItem onClick={() => navigate("/devoluciones")}>
-                                        Por devolver
+                                    Por devolver
                                 </DropdownItem>
 
                             </DropdownMenu>
@@ -108,8 +114,8 @@ const NavBarAdmin = () => {
                 </div>
             )}
             <div className="text-white font-medium sm:flex hidden sm:gap-4 flex-row md:gap-5 lg:gap-16 items-center sm:text-xs md:text-[16px]  ">
-                <NavLink to={"/cambiar-password"}>Asignaturas</NavLink>
-                <NavLink to={"/solicitar-material"}>Docentes</NavLink>
+                <NavLink to={"/asignaturas"}>Asignaturas</NavLink>
+                <NavLink to={"/docentes"}>Docentes</NavLink>
                 <NavLink to={"/alumnos"}>Alumnos</NavLink>
                 <Dropdown>
                     <NavbarItem>
@@ -131,13 +137,19 @@ const NavBarAdmin = () => {
                         }}
                     >
                         <DropdownItem onClick={() => navigate("/aditivos")}>
-                                Aditivos
+                            Aditivos
                         </DropdownItem>
                         <DropdownItem onClick={() => navigate("/materialesLab")}>
-                                Materiales de laboratorio
-                        </DropdownItem>
+                            Materiales de laboratorio
+                        </DropdownItem> /equipos-taller
                         <DropdownItem onClick={() => navigate("/materialesAlmacen")}>
-                                Materiales de almacen
+                            Materiales de almacen
+                        </DropdownItem>
+                        <DropdownItem onClick={() => navigate("/equipos-taller")}>
+                            Equipos taller
+                        </DropdownItem>
+                        <DropdownItem onClick={() => navigate("/equipos-lab")}>
+                            Equipos laboratorio
                         </DropdownItem>
 
                     </DropdownMenu>

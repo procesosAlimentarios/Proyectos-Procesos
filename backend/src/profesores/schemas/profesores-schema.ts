@@ -12,6 +12,17 @@ export class Profesores {
     })
     nombre: string;
     @Prop({
+        required: true,
+        trim: true,
+        unique: true,
+    })
+    correo: string;
+    @Prop({
+        required: true,
+        trim: true,
+    })
+    password: string;
+    @Prop({
         type: [{ type: Types.ObjectId, ref: Asignaturas.name }],
         required: true,
     })

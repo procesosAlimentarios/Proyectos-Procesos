@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString, MaxLength, MinLength } from "class-validator";
+import { IsBoolean, IsNotEmpty, IsString, MaxLength, MinLength } from "class-validator";
 
 export class CreateEquiposTallerDto {
     @IsString()
@@ -7,11 +7,9 @@ export class CreateEquiposTallerDto {
     @MaxLength(40)
     nombre: string;
 
-    @IsString()
-    @IsNotEmpty()
-    @MinLength(3)
-    @MaxLength(20)
-    noInventario: string;
+   @IsBoolean()
+   @IsNotEmpty()
+    enUso: boolean;
 
     @IsString()
     @IsNotEmpty()

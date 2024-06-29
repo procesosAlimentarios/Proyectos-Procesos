@@ -11,7 +11,4 @@ export class UpdateMaterialInventarioDto extends PartialType(CreateMaterialInven
     @IsOptional()
     existencias:number;
 
-    @IsString()
-    @IsOptional()
-    noInventario:string;
 }

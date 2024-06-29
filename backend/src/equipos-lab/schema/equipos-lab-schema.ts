@@ -11,11 +11,6 @@ export class EquiposLab {
     })
     nombre: string;
 
-    @Prop({
-        required: true,
-        trim: true,
-    })
-    noInventario: string;
 
     @Prop({
         required: true,

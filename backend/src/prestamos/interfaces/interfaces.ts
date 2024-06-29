@@ -2,7 +2,6 @@ export interface MaterialAlmacen {
     _id: string;
     nombre: string;
     existencias:number;
-    noInventario:string;
     createdAt:Date;
     updatedAt:Date;
     // otras propiedades...
@@ -11,14 +10,12 @@ export interface MaterialAlmacen {
   export interface EquiposLaboratorio {
     _id: string;
     nombre: string;
-    noInventario:string;
     cantidad:number;
   }
   export interface EquiposTallerInterface {
     _id: string;
     nombre: string;
     cantidad:number;
-    noInventario:string;
   }
   
  export interface MaterialLab {

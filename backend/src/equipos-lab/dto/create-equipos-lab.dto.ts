@@ -7,11 +7,6 @@ export class CreateEquiposLabDto {
     @MaxLength(40)
     nombre: string;
 
-    @IsString()
-    @IsNotEmpty()
-    @MinLength(1)
-    @MaxLength(20)
-    noInventario: string;
 
     @IsNotEmpty()
     @IsNumber()

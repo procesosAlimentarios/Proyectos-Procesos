@@ -9,6 +9,18 @@ export class UpdateProfesoreDto extends PartialType(CreateProfesoreDto) {
     @IsOptional()
     nombre: string;
 
+    @IsString()
+    @MinLength(3)
+    @MaxLength(40)
+    @IsOptional()
+    correo: string;
+
+    @IsString()
+    @MinLength(3)
+    @MaxLength(40)
+    @IsOptional()
+    password: string;
+
     @IsOptional()
     @IsMongoId()
     materias:Types.ObjectId[];

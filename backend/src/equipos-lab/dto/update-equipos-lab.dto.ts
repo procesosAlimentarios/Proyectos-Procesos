@@ -7,9 +7,6 @@ export class UpdateEquiposLabDto extends PartialType(CreateEquiposLabDto) {
     @IsOptional()
     nombre: string;
 
-    @IsString()
-    @IsOptional()
-    noInventario: string;
 
     @IsNumber()
     @IsOptional()

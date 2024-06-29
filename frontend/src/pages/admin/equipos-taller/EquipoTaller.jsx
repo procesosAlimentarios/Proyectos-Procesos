@@ -8,19 +8,21 @@ import { CiEdit } from "react-icons/ci";
 import ModalDeleteItem from "../../../components/ModalDeleteItem";
 import { IoMdAdd } from "react-icons/io";
 import { GoListOrdered } from "react-icons/go";
-import { deleteAlumno, getAllAlumnos } from "../../../api/alumnos";
+import { deleteAlumno } from "../../../api/alumnos";
+import { AiOutlineBars } from "react-icons/ai";
 import { SiLevelsdotfyi } from "react-icons/si";
 import { grupos, niveles } from "../../../data/cuatrimestre-grupo";
 import { useNavigate } from "react-router-dom";
-const AlumnosLista = () => {
+import { deleteEquipoTaller, getAllEquipoTaller } from "../../../api/materiales";
+const EquiposTaller = () => {
     const [data, setData] = React.useState([]);
     const [loaded, setLoaded] = React.useState(true);
     const [filteredData, setFilteredData] = React.useState([]);
     const [page, setPage] = React.useState(1);
     const [filterValue, setFilterValue] = React.useState("");
     const [sortOrder, setSortOrder] = React.useState("default");
-    const [groupFilter, setGroupFilter] = React.useState("all");
-    const [semesterFilter, setSemesterFilter] = React.useState("all");
+    const [estado, setestado] = React.useState("all");
+    const [enUso, setenUso] = React.useState("all");
     const navigate = useNavigate();
     const rowsPerPage = 10;
     const pages = Math.ceil(filteredData.length / rowsPerPage);
@@ -32,7 +34,7 @@ const AlumnosLista = () => {
 
     useEffect(() => {
         const getAlumnos = async () => {
-            const res = await getAllAlumnos();
+            const res = await getAllEquipoTaller();
             if (res) {
                 setLoaded(false);
                 setData(res.data);
@@ -47,8 +49,8 @@ const AlumnosLista = () => {
         const lowercasedFilter = filterValue.toLowerCase();
         const filteredAndSortedData = data
             .filter(item => item?.nombre.toLowerCase().includes(lowercasedFilter))
-            .filter(item => groupFilter === "all" || item?.grupo === groupFilter)
-            .filter(item => semesterFilter === "all" || item?.cuatrimestre === semesterFilter);
+            .filter(item => estado === "all" || item?.estado === estado)
+            .filter(item => enUso === "all" || item?.enUso.toString() == enUso);
 
         if (sortOrder === "asc") {
             filteredAndSortedData.sort((a, b) => a.nombre.localeCompare(b.nombre));
@@ -58,7 +60,7 @@ const AlumnosLista = () => {
 
         setFilteredData(filteredAndSortedData);
         setPage(1);
-    }, [filterValue, data, sortOrder, groupFilter, semesterFilter]);
+    }, [filterValue, data, sortOrder, estado, enUso]);
 
     const onSearchChange = React.useCallback((e) => {
         const { value } = e.target;
@@ -73,9 +75,9 @@ const AlumnosLista = () => {
 
     const handleDelete = async (id) => {
         try {
-            const res = await deleteAlumno(id);
+            const res = await deleteEquipoTaller(id);
             if (res) {
-                toast.success("Alumno eliminado correctamente.");
+                toast.success("Equipo eliminado correctamente.");
                 setData(data.filter(item => item._id !== id));
             }
         } catch (error) {
@@ -100,7 +102,7 @@ const AlumnosLista = () => {
             <div className="w-full mb-2">
                 <div className="flex justify-between items-center max-w-[900px] m-auto gap-3">
                     <div className="flex w-full gap-10">
-                        <p className="text-center text-2xl font-bold ">Alumnos</p>
+                        <p className="text-center text-2xl font-bold ">Equipos Taller</p>
                         <Input
                             isClearable
                             className="w-full sm:max-w-[300px]"
@@ -144,35 +146,39 @@ const AlumnosLista = () => {
                         <Dropdown>
                             <DropdownTrigger>
                                 <Button variant="flat">
-                                    <Tooltip content="Filtrar por grupo">
+                                    <Tooltip content="Filtrar por estado">
                                         <span>
-                                            <BsAlphabetUppercase className="text-xl" />
+                                            <AiOutlineBars className="text-xl" />
                                         </span>
                                     </Tooltip>
                                 </Button>
                             </DropdownTrigger>
                             <DropdownMenu
                                 disallowEmptySelection
-                                aria-label="Filtrar por grupo"
+                                aria-label="Filtrar por estado"
                                 closeOnSelect={true}
                                 selectionMode="single"
-                                selectedKeys={new Set([groupFilter])}
-                                onSelectionChange={(key) => setGroupFilter(Array.from(key).join(""))}
+                                selectedKeys={new Set([estado])}
+                                onSelectionChange={(key) => setestado(Array.from(key).join(""))}
                             >
 
-                                {grupos.map(item => item === "all" ?
-                                    <DropdownItem key={item}>
-                                        Todos
-                                    </DropdownItem> : <DropdownItem key={item}>
-                                        {item}
-                                    </DropdownItem>
-                                )}
+                                <DropdownItem key={"all"}>
+                                    Todo
+                                </DropdownItem>
+
+                                <DropdownItem key={"ACTIVO"}>
+                                    Activo
+                                </DropdownItem>
+                                <DropdownItem key={"INACTIVO"}>
+                                    Inactivo
+                                </DropdownItem>
+
                             </DropdownMenu>
                         </Dropdown>
                         <Dropdown>
                             <DropdownTrigger>
                                 <Button variant="flat">
-                                    <Tooltip content="Filtrar por cuatrimestre">
+                                    <Tooltip content="Filtrar por uso">
                                         <span>
                                             <SiLevelsdotfyi className="text-xl" />
                                         </span>
@@ -181,26 +187,28 @@ const AlumnosLista = () => {
                             </DropdownTrigger>
                             <DropdownMenu
                                 disallowEmptySelection
-                                className="overflow-y-scroll max-h-96"
-                                aria-label="Filtrar por cuatrimestre"
+                                aria-label="Filtrar por uso"
                                 closeOnSelect={true}
                                 selectionMode="single"
-                                selectedKeys={new Set([semesterFilter])}
-                                onSelectionChange={(key) => setSemesterFilter(Array.from(key).join(""))}
+                                selectedKeys={new Set([enUso])}
+                                onSelectionChange={(key) => setenUso(Array.from(key).join(""))}
                             >
-                                {niveles.map(item => item === "all" ?
-                                    <DropdownItem key={item}>
+                               
+                                    <DropdownItem key={"all"}>
                                         Todos
-                                    </DropdownItem> : <DropdownItem key={item}>
-                                        {item}
                                     </DropdownItem>
-                                )}
+                                     <DropdownItem key={"true"}>
+                                        En uso
+                                    </DropdownItem>
+                                    <DropdownItem key={"false"}>
+                                        Libre
+                                    </DropdownItem>
 
                             </DropdownMenu>
                         </Dropdown>
                     </div>
                     <div className="flex items-center justify-between gap-5">
-                        <Button className="" variant="flat" onClick={()=>navigate("/agregar-alumno")} >
+                        <Button className="" variant="flat" onClick={() => navigate("/agregar-equipo-taller")} >
                             <Tooltip content="Agregar">
                                 <span>
                                     <IoMdAdd className=" text-2xl " />
@@ -218,7 +226,7 @@ const AlumnosLista = () => {
                     data.length === 0 ?
                         (
                             <div className="flex justify-center items-center h-52">
-                                <p className="mt-10 font-bold text-gray-500">No hay alumnos registrados todavia.</p>
+                                <p className="mt-10 font-bold text-gray-500">No hay equipos registrados todavia.</p>
                             </div>
                         ) : filteredData.length === 0 ?
                             <div className="flex justify-center items-center h-52">
@@ -248,20 +256,15 @@ const AlumnosLista = () => {
                             >
                                 <TableHeader >
                                     <TableColumn className="text-center font-bold">
-                                        Matricula
-                                    </TableColumn>
-                                    <TableColumn className="text-center font-bold">
                                         Nombre
-                                    </TableColumn>
-                                    <TableColumn className="text-center font-bold">
-                                        Grupo
-                                    </TableColumn>
-                                    <TableColumn className="text-center font-bold">
-                                        Cuatrimestre
                                     </TableColumn>
                                     <TableColumn className="text-center font-bold">
                                         Estado
                                     </TableColumn>
+                                    <TableColumn className="text-center font-bold">
+                                        En uso
+                                    </TableColumn>
+
                                     <TableColumn className="text-center font-bold">
                                         Acciones
                                     </TableColumn>
@@ -270,20 +273,15 @@ const AlumnosLista = () => {
                                     {items.map((item, index) => (
                                         <TableRow key={index} className="text-sm">
                                             <TableCell className=" text-xs sm:text-sm">
-                                                {item.matricula}
-                                            </TableCell>
-                                            <TableCell className=" text-xs sm:text-sm">
                                                 {item.nombre}
                                             </TableCell>
-                                            <TableCell className="text-xs sm:text-sm text-center">
-                                                {item.grupo}
+                                            <TableCell className=" text-xs sm:text-sm text-center">
+                                                {item.estado}
                                             </TableCell>
                                             <TableCell className="text-xs sm:text-sm text-center">
-                                                {item.cuatrimestre}
+                                                {item.enUso ? "EN USO" : "LIBRE"}
                                             </TableCell>
-                                            <TableCell className="text-xs sm:text-sm text-center">
-                                                {item.estado ? "ACTIVO" : "INACTIVO"}
-                                            </TableCell>
+
                                             <TableCell className="flex justify-around gap-2">
                                                 <Button
                                                     className="text-xl"
@@ -303,11 +301,11 @@ const AlumnosLista = () => {
                                                     color="warning"
                                                     variant="flat"
                                                 >
-                                                    <ModalDeleteItem 
-                                                        id={item._id} 
-                                                        handleFunction={handleDelete} 
+                                                    <ModalDeleteItem
+                                                        id={item._id}
+                                                        handleFunction={handleDelete}
                                                         texto={`
-                                                                Estas apunto de eliminar al alumno ${item.nombre}.
+                                                                Estas apunto de eliminar el equipo ${item.nombre}.
                                                             `
                                                         }
                                                     />
@@ -323,4 +321,4 @@ const AlumnosLista = () => {
     );
 };
 
-export default AlumnosLista;
+export default EquiposTaller;
