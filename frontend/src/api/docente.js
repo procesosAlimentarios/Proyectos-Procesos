@@ -1,0 +1,1 @@
+export const agregarDocente =(data)=>axios.post("/profesores", data)

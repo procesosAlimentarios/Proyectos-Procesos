@@ -24,6 +24,13 @@ import AgregarMaterialLab from '../pages/admin/MaterialLab/AgregarMaterialLab'
 import EditarMaterialLab from '../pages/admin/MaterialLab/EditarMaterialLab'
 import MaterialLab from '../pages/admin/MaterialLab/MaterialLab'
 
+import AgregarAlumno from '../pages/admin/Alumno/AgregarAlumno'
+import EditarAlumno from '../pages/admin/Alumno/EditarAlumno'
+
+import AgregarDocente from '../pages/admin/Docente/AgregarDocente'
+import EditarDocente from '../pages/admin/Docente/EditarDocente'
+
+import AgregarAsignatura from '../pages/admin/Asignatura/AgregarAsignatura'
 
 const AppRoutes = () => {
     return (
@@ -52,6 +59,14 @@ const AppRoutes = () => {
                 <Route path='/AgregarMaterialLab' element={<AgregarMaterialLab/>}/>
                 <Route path='/EditarMaterialLab' element={<EditarMaterialLab/>}/>
                 <Route path='/MaterialLab' element={<MaterialLab/>}/>
+
+                <Route path='/AgregarAlumno' element={<AgregarAlumno/>}/>
+                <Route path='/EditarAlumno' element={<EditarAlumno/>}/>
+
+                <Route path='/AgregarDocente' element={<AgregarDocente/>}/>
+                <Route path='/EditarDocente' element={<EditarDocente/>}/>
+
+                <Route path='/AgregarAsignatura' element={<AgregarAsignatura/>}/>
               
             </Routes>
         </Router>

@@ -87,7 +87,7 @@ function AgregarEquipoTaller() {
                         <Select
                             label="Estado"
                             placeholder="Select  status"
-
+                            
                             className="max-w-xs"
                             isInvalid={errors?.estado ? true : false}
                             errorMessage={errors?.estado?.message}
