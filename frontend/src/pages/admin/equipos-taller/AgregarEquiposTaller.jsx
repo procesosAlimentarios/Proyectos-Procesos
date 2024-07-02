@@ -7,13 +7,13 @@ import { createEquipoTaller } from "../../../api/materiales";
 import { useNavigate } from "react-router-dom";
 
 function AgregarEquiposTaller() {
-    const { backgroundAgregar } = styles;
     const { register, formState: { errors }, handleSubmit, watch } = useForm();
     const navigate = useNavigate();
     const onSubmit = handleSubmit(async (values) => {
         try {
             const data = {
                 ...values,
+                nombre: values.nombre.toUpperCase(),
                 enUso:values.enUso == "true" ? true : false
             }
             console.log(data);

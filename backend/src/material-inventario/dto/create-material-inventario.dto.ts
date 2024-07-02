@@ -9,7 +9,7 @@ export class CreateMaterialInventarioDto {
 
     @IsNotEmpty()
     @IsNumber()
-    @Min(0)
+    @Min(1)
     @Max(100)
     existencias:number;
 }

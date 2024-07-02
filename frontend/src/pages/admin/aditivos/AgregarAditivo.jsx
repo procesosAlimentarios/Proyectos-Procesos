@@ -1,19 +1,16 @@
-import { styles } from "../../../assets/styles/global-styles"
 import { useForm } from "react-hook-form";
 import { Input } from "@nextui-org/react";
 import { Toaster, toast } from "sonner";
 import { createAditivo } from "../../../api/materiales";
 import { useNavigate } from "react-router-dom"
 function AgregarAditivo() {
-    const { backegrounGreen } = styles;
-    const { backgroundRed } = styles;
     const { register, formState: { errors }, handleSubmit, watch } = useForm();
     const navigate = useNavigate();
     const onSubmit = handleSubmit(async (values) => {
         try {
             console.log(values)
             const data = {
-                ...values,
+                nombre: values.nombre.toUpperCase(),
                 cantidad: parseInt(values.cantidad)
             }
             const res = await createAditivo(data);

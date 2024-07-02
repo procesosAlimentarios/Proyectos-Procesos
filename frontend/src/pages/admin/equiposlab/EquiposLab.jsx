@@ -102,7 +102,7 @@ const EquiposLab = () => {
             <div className="w-full mb-2">
                 <div className="flex justify-between flex-col sm:flex-row  items-center max-w-[900px] m-auto gap-3">
                     <div className="flex flex-col justify-center sm:flex-row items-center w-full sm:gap-10 ">
-                        <p className="text-center sm:text-2xl font-bold mb-3 ">Equipos Laboratorio</p>
+                        <p className="text-center text-2xl font-bold mb-3 ">Equipos Laboratorio</p>
                         <div className="flex flex-row items-center gap-3">
                             <Input
                                 isClearable

@@ -4,7 +4,7 @@ import { useAuth } from '../context/auth-context';
 import { useNavigate } from 'react-router-dom';
 import { Input } from "@nextui-org/react";
 import { useForm } from "react-hook-form"
-import { IoEye,IoEyeOff } from "react-icons/io5";
+import { IoEye, IoEyeOff } from "react-icons/io5";
 const Home = () => {
   const { backegrounGreen } = styles;
   const { register, formState: { errors }, handleSubmit, } = useForm();
@@ -17,7 +17,8 @@ const Home = () => {
   const onSubmit = handleSubmit(async (values) => {
     const res = await loginAlumno(values);
     if (res) {
-      navigate("/inicio");
+      res.role === "alumno" && navigate("/inicio");
+      res.role === "admin" && navigate("/inicio-admin");
     }
   });
 
@@ -52,25 +53,25 @@ const Home = () => {
           <Input
             label="Contraseña"
             variant="flat"
-            isInvalid={errors.password ? true: false}
-            errorMessage ={errors?.password?.message}
+            isInvalid={errors.password ? true : false}
+            errorMessage={errors?.password?.message}
             endContent={
               <button className="focus:outline-none" type="button" onClick={toggleVisibility}>
                 {isVisible ? (
                   <IoEyeOff className="text-2xl text-default-400 pointer-events-none" />
                 ) : (
-                  <IoEye  className="text-2xl text-default-400 pointer-events-none" />
+                  <IoEye className="text-2xl text-default-400 pointer-events-none" />
                 )}
               </button>
             }
             type={isVisible ? "text" : "password"}
             {
-              ...register("password",{
-                required: {
-                  value: true,
-                  message:"La contraseña es requerida."
-                },
-              })
+            ...register("password", {
+              required: {
+                value: true,
+                message: "La contraseña es requerida."
+              },
+            })
             }
           />
           <button style={{ backgroundColor: styles.btnBackground }} className='text-white p-2 rounded-sm font-semibold'>Iniciar Sesión</button>

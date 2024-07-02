@@ -10,7 +10,7 @@ function AgregarEquipoLab() {
         try {
             console.log(values)
             const data = {
-                ...values,
+                nombre: values.nombre.toUpperCase(),
                 cantidad: parseInt(values.cantidad)
             }
             const res = await createEquipoLab(data);

@@ -2,6 +2,8 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, ConflictException, N
 import { AsignaturasService } from './asignaturas.service';
 import { CreateAsignaturaDto } from './dto/create-asignatura.dto';
 import { UpdateAsignaturaDto } from './dto/update-asignatura.dto';
+import { Auth } from 'src/auth/decorators/auth.decorator';
+import { Role } from 'src/auth/roles/role.enum';
 
 @Controller('asignaturas')
 export class AsignaturasController {

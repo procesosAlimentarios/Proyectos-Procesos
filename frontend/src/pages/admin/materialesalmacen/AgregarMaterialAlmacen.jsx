@@ -11,7 +11,7 @@ function AgregarMaterialAlmacen() {
         try {
             console.log(values)
             const data = {
-                ...values,
+                nombre: values.nombre.toUpperCase(),
                 existencias: parseInt(values.existencias)
             }
             const res = await createMaterialInventario(data);
@@ -72,12 +72,12 @@ function AgregarMaterialAlmacen() {
                             ...register("existencias", {
                                 required: "La cantidad es requerida",
                                 min: {
-                                    value: 3,
+                                    value: 1,
                                     message: "La minima cantidad es de 1",
                                 },
                                 max: {
-                                    value: 20,
-                                    message: "La cantidad maxima es 20"
+                                    value: 100,
+                                    message: "La cantidad maxima es 100"
                                 }
                             })
                             } />

@@ -9,11 +9,14 @@ import { AuthService } from 'src/auth/auth.service';
 import { AdminModule } from 'src/admin/admin.module';
 import { AdminController } from 'src/admin/admin.controller';
 import { AdminService } from 'src/admin/admin.service';
+import { ProfesoresModule } from 'src/profesores/profesores.module';
+import { ProfesoresController } from 'src/profesores/profesores.controller';
+import { ProfesoresService } from 'src/profesores/profesores.service';
 
 @Module({
-  imports:[AuthModule,AdminModule,MongooseModule.forFeature([{name:Alumnos.name,schema:AlumnosSchema}])],
-  controllers: [AlumnosController,AuthController,AdminController],
-  providers: [AlumnosService,AuthService,AdminService],
-  exports:[MongooseModule]
+  imports: [AuthModule, AdminModule, ProfesoresModule, MongooseModule.forFeature([{ name: Alumnos.name, schema: AlumnosSchema }])],
+  controllers: [AlumnosController, ProfesoresController, AuthController, AdminController],
+  providers: [AlumnosService, AuthService, AdminService, ProfesoresService],
+  exports: [MongooseModule]
 })
-export class AlumnosModule {}
+export class AlumnosModule { }

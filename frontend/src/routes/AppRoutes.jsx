@@ -30,6 +30,7 @@ import EquiposTaller from '../pages/admin/equipos-taller/EquipoTaller'
 import AgregarEquiposTaller from '../pages/admin/equipos-taller/AgregarEquiposTaller'
 import EquiposLab from '../pages/admin/equiposlab/EquiposLab'
 import AgregarEquipoLab from '../pages/admin/equiposlab/AgregarEquipoLab'
+import ProtectedRouterAdmin from '../utils/ProtectedRouterAdmin'
 const AppRoutes = () => {
     const location = useLocation();
     const routesWithNavBarStudent = ["/inicio", "/cambiar-password", "/solicitar-material"];
@@ -48,7 +49,7 @@ const AppRoutes = () => {
                         <Route path='/cambiar-password' element={<ChangePassword />} />
                         <Route path='/solicitar-material' element={<RequestMaterials />} />
                     </Route>
-                    <Route>
+                    <Route element={<ProtectedRouterAdmin/>}>
                         <Route path='/inicio-admin' element={<WelcomeAdmin />} />
                         <Route path='/prestamos' element={<LoansList />} />
                         <Route path='/solicitudes' element={<Requests />} />

@@ -10,7 +10,7 @@ import { GoListOrdered } from "react-icons/go";
 import { SiLevelsdotfyi } from "react-icons/si";
 import { grupos, niveles } from "../../../data/cuatrimestre-grupo"
 import { deleteAsignatura, getAllAsignaturas } from "../../../api/asignaturas";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 const Asignaturas = () => {
     const [data, setData] = React.useState([]);
     const [loaded, setLoaded] = React.useState(true);
@@ -94,12 +94,12 @@ const Asignaturas = () => {
         <div className='w-full sm:p-5 sm:px-20 p-5'>
             <Toaster richColors />
             <div className="w-full mb-2">
-                <div className="flex justify-between items-center max-w-[900px] m-auto gap-3">
-                    <div className="flex w-full gap-10">
+                <div className="flex flex-col md:flex-row justify-between items-center max-w-[900px] m-auto md:gap-3 gap-3">
+                    <div className="flex md:flex-row flex-col w-full md:gap-10 gap-3">
                         <p className="text-center text-2xl font-bold ">Asignaturas</p>
                         <Input
                             isClearable
-                            className="w-full sm:max-w-[300px]"
+                            className="w-full"
                             placeholder="Buscar"
                             startContent={<CiSearch />}
                             value={filterValue}
@@ -107,9 +107,10 @@ const Asignaturas = () => {
                             onChange={onSearchChange}
                         />
                     </div>
-                    <div className="flex max-w-[900px] justify-end mx-auto my-2 gap-3">
+
+                    <div className="flex w-full md:max-w-[900px] justify-end mx-auto my-2 gap-3">
                         <Dropdown>
-                            <DropdownTrigger className="hidden sm:flex">
+                            <DropdownTrigger>
                                 <Button variant="flat">
                                     <Tooltip content="Ordenar">
                                         <span>
@@ -137,7 +138,7 @@ const Asignaturas = () => {
                                 </DropdownItem>
                             </DropdownMenu>
                         </Dropdown>
-                      
+
                         <Dropdown>
                             <DropdownTrigger>
                                 <Button variant="flat">
@@ -167,10 +168,8 @@ const Asignaturas = () => {
 
                             </DropdownMenu>
                         </Dropdown>
-                    </div>
-                    <div className="flex items-center justify-between gap-5">
                         <Button className="" variant="flat"
-                            onClick={()=>navigate("/agregar-asignatura")}
+                            onClick={() => navigate("/agregar-asignatura")}
                         >
                             <Tooltip content="Agregar">
                                 <span>
@@ -179,6 +178,8 @@ const Asignaturas = () => {
                             </Tooltip>
                         </Button>
                     </div>
+
+
                 </div>
 
             </div>
@@ -218,15 +219,15 @@ const Asignaturas = () => {
                                 className="h-full max-w-[900px] mx-auto"
                             >
                                 <TableHeader >
-                                    
+
                                     <TableColumn className="text-center font-bold">
                                         Nombre
                                     </TableColumn>
-                            
+
                                     <TableColumn className="text-center font-bold">
                                         Cuatrimestre
                                     </TableColumn>
-                                   
+
                                     <TableColumn className="text-center font-bold">
                                         Acciones
                                     </TableColumn>
@@ -234,15 +235,15 @@ const Asignaturas = () => {
                                 <TableBody >
                                     {items.map((item, index) => (
                                         <TableRow key={index} className="text-sm">
-                                            
+
                                             <TableCell className=" text-xs sm:text-sm">
                                                 {item.nombre}
                                             </TableCell>
-                                            
+
                                             <TableCell className="text-xs sm:text-sm text-center uppercase">
                                                 {item.cuatrimestre}
                                             </TableCell>
-                                            
+
                                             <TableCell className="flex justify-around gap-2">
                                                 <Button
                                                     className="text-xl"
@@ -262,7 +263,7 @@ const Asignaturas = () => {
                                                     color="warning"
                                                     variant="flat"
                                                 >
-                                                    <ModalDeleteItem texto={`Estas apunto de eliminar ${item.nombre}`} handleFunction={handleDelete}  id={item._id} />
+                                                    <ModalDeleteItem texto={`Estas apunto de eliminar ${item.nombre}`} handleFunction={handleDelete} id={item._id} />
                                                 </Button>
 
                                             </TableCell>

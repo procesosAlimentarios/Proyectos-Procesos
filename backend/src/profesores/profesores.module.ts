@@ -12,5 +12,6 @@ import { AsignaturaSchema, Asignaturas } from 'src/asignaturas/schemas/asignatur
 ],
   controllers: [ProfesoresController],
   providers: [ProfesoresService],
+  exports:[MongooseModule]
 })
 export class ProfesoresModule {}

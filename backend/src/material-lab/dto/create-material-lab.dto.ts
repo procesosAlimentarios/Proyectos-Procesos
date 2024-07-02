@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsString, MaxLength, MinLength } from "class-validator";
+import { IsNotEmpty, IsNumber, IsString, Max, MaxLength, Min, MinLength } from "class-validator";
 
 export class CreateMaterialLabDto {
     @IsNotEmpty()
@@ -9,5 +9,7 @@ export class CreateMaterialLabDto {
 
     @IsNotEmpty()
     @IsNumber()
+    @Min(1)
+    @Max(100)
     existencias:number;
 }

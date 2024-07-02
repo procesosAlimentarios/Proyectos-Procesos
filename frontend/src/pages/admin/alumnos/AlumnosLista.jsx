@@ -98,12 +98,11 @@ const AlumnosLista = () => {
         <div className='w-full sm:p-5 sm:px-20 p-5'>
             <Toaster richColors />
             <div className="w-full mb-2">
-                <div className="flex justify-between items-center max-w-[900px] m-auto gap-3">
-                    <div className="flex w-full gap-10">
+                <div className="flex md:flex-row flex-col justify-between items-center max-w-[900px] m-auto gap-3">
+                    <div className="flex md:flex-row flex-col w-full md:gap-10 gap-3">
                         <p className="text-center text-2xl font-bold ">Alumnos</p>
                         <Input
                             isClearable
-                            className="w-full sm:max-w-[300px]"
                             placeholder="Buscar"
                             startContent={<CiSearch />}
                             value={filterValue}
@@ -111,7 +110,7 @@ const AlumnosLista = () => {
                             onChange={onSearchChange}
                         />
                     </div>
-                    <div className="flex max-w-[900px] justify-end mx-auto my-2 gap-3">
+                    <div className="flex w-full md:max-w-[900px] justify-end mx-auto my-2 gap-3">
                         <Dropdown>
                             <DropdownTrigger className="hidden sm:flex">
                                 <Button variant="flat">
@@ -198,9 +197,7 @@ const AlumnosLista = () => {
 
                             </DropdownMenu>
                         </Dropdown>
-                    </div>
-                    <div className="flex items-center justify-between gap-5">
-                        <Button className="" variant="flat" onClick={()=>navigate("/agregar-alumno")} >
+                        <Button className="" variant="flat" onClick={() => navigate("/agregar-alumno")} >
                             <Tooltip content="Agregar">
                                 <span>
                                     <IoMdAdd className=" text-2xl " />
@@ -208,6 +205,7 @@ const AlumnosLista = () => {
                             </Tooltip>
                         </Button>
                     </div>
+                   
                 </div>
 
             </div>
@@ -278,7 +276,7 @@ const AlumnosLista = () => {
                                             <TableCell className="text-xs sm:text-sm text-center">
                                                 {item.grupo}
                                             </TableCell>
-                                            <TableCell className="text-xs sm:text-sm text-center">
+                                            <TableCell className="text-xs sm:text-sm text-center uppercase">
                                                 {item.cuatrimestre}
                                             </TableCell>
                                             <TableCell className="text-xs sm:text-sm text-center">
@@ -303,9 +301,9 @@ const AlumnosLista = () => {
                                                     color="warning"
                                                     variant="flat"
                                                 >
-                                                    <ModalDeleteItem 
-                                                        id={item._id} 
-                                                        handleFunction={handleDelete} 
+                                                    <ModalDeleteItem
+                                                        id={item._id}
+                                                        handleFunction={handleDelete}
                                                         texto={`
                                                                 Estas apunto de eliminar al alumno ${item.nombre}.
                                                             `

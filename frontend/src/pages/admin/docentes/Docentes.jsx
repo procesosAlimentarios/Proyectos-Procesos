@@ -8,7 +8,7 @@ import ModalDeleteItem from "../../../components/ModalDeleteItem";
 import { IoMdAdd } from "react-icons/io";
 import { GoListOrdered } from "react-icons/go";
 import { deleteProfesor, getAllProfesores } from "../../../api/profesores";
-import {useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 const Docentes = () => {
     const [data, setData] = React.useState([]);
     const [loaded, setLoaded] = React.useState(true);
@@ -90,8 +90,8 @@ const Docentes = () => {
         <div className='w-full sm:p-5 sm:px-20 p-5'>
             <Toaster richColors />
             <div className="w-full mb-2">
-                <div className="flex justify-between items-center max-w-[900px] m-auto gap-3">
-                    <div className="flex w-full gap-10">
+                <div className="flex flex-col sm:flex-row justify-between items-center max-w-[900px] m-auto gap-3">
+                    <div className="flex flex-col sm:flex-row w-full sm:gap-10 gap-3">
                         <p className="text-center text-2xl font-bold ">Docentes</p>
                         <Input
                             isClearable
@@ -103,9 +103,9 @@ const Docentes = () => {
                             onChange={onSearchChange}
                         />
                     </div>
-                    <div className="flex max-w-[900px] justify-end mx-auto my-2 gap-3">
+                    <div className="flex w-full sm:max-w-[900px] justify-end mx-auto my-2 gap-3">
                         <Dropdown>
-                            <DropdownTrigger className="hidden sm:flex">
+                            <DropdownTrigger >
                                 <Button variant="flat">
                                     <Tooltip content="Ordenar">
                                         <span>
@@ -133,11 +133,8 @@ const Docentes = () => {
                                 </DropdownItem>
                             </DropdownMenu>
                         </Dropdown>
-
-                    </div>
-                    <div className="flex items-center justify-between gap-5">
-                        <Button className="" variant="flat" 
-                            onClick={()=>navigate("/agregar-docente")}
+                        <Button className="" variant="flat"
+                            onClick={() => navigate("/agregar-docente")}
                         >
                             <Tooltip content="Agregar">
                                 <span>
@@ -146,6 +143,7 @@ const Docentes = () => {
                             </Tooltip>
                         </Button>
                     </div>
+                  
                 </div>
 
             </div>
@@ -207,7 +205,7 @@ const Docentes = () => {
                                             <TableCell className=" text-xs sm:text-sm">
 
                                                 {
-                                                    item?.materias.map((materia,i) => <li key={item?._id + i}>
+                                                    item?.materias.map((materia, i) => <li key={item?._id + i}>
                                                         {materia?.nombre}
                                                     </li>)
                                                 }
@@ -236,7 +234,7 @@ const Docentes = () => {
                                                 >
                                                     <ModalDeleteItem handleFunction={handleDelete} id={item._id} texto={
                                                         `Estas apunto de eliminar al docente  ${item.nombre}`
-                                                    }/>
+                                                    } />
                                                 </Button>
 
                                             </TableCell>

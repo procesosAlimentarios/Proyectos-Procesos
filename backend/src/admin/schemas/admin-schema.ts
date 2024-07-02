@@ -14,8 +14,6 @@ export class Administrador{
     @Prop({required: true,trim: true})
     password:string
 
-    @Prop({default:"user"})
-    role:string
 };
 
 export const SchemaAdmin = SchemaFactory.createForClass(Administrador);

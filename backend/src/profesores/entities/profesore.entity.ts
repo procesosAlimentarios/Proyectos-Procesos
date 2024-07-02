@@ -3,4 +3,4 @@ export class Profesore {
     correo: string;
     password: string;
     materias:string[];
-}
+};

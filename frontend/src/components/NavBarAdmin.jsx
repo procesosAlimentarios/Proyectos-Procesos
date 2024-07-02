@@ -54,19 +54,35 @@ const NavBarAdmin = () => {
                                     base: "gap-4",
                                 }}
                             >
-                                <DropdownItem onClick={() => navigate("/prestamos")}>
+                                <DropdownItem onClick={() => {
+                                    navigate("/aditivos");
+                                    setFlag(false);
+                                }}>
                                     Aditivos
                                 </DropdownItem>
-                                <DropdownItem onClick={() => navigate("/materialesLab")}>
+                                <DropdownItem onClick={() => {
+                                    navigate("/materialesLab");
+                                    setFlag(false);
+                                }}>
                                     Materiales de laboratorio
                                 </DropdownItem>
-                                <DropdownItem onClick={() => navigate("/materialesAlmacen")}>
+                                <DropdownItem onClick={() => {
+                                    navigate("/materialesAlmacen");
+                                    setFlag(false);
+                                }}>
                                     Materiales de almacen
                                 </DropdownItem>
-                                <DropdownItem onClick={() => navigate("/equipos-taller")}>
+                                <DropdownItem onClick={() => {
+                                    navigate("/equipos-taller");
+                                    setFlag(false);
+
+                                }}>
                                     Equipos taller
                                 </DropdownItem>
-                                <DropdownItem onClick={() => navigate("/equipos-lab")}>
+                                <DropdownItem onClick={() => {
+                                    navigate("/equipos-lab");
+                                    setFlag(false);
+                                }}>
                                     Equipos laboratorio
                                 </DropdownItem>
 
@@ -93,16 +109,28 @@ const NavBarAdmin = () => {
                                     base: "gap-4",
                                 }}
                             >
-                                <DropdownItem onClick={() => navigate("/prestamos")}>
+                                <DropdownItem onClick={() => {
+                                    navigate("/prestamos");
+                                    setFlag(false);
+                                }}>
                                     Todos
                                 </DropdownItem>
-                                <DropdownItem onClick={() => navigate("/solicitar-material")} >
+                                <DropdownItem onClick={() => {
+                                    navigate("/solicitar-material");
+                                    setFlag(false);
+                                }} >
                                     Por Aceptar
                                 </DropdownItem>
-                                <DropdownItem onClick={() => navigate("/entregas")} >
+                                <DropdownItem onClick={() => {
+                                    navigate("/entregas");
+                                    setFlag(false);
+                                }} >
                                     Por entregar
                                 </DropdownItem>
-                                <DropdownItem onClick={() => navigate("/devoluciones")}>
+                                <DropdownItem onClick={() => {
+                                    navigate("/devoluciones");
+                                    setFlag(false);
+                                }}>
                                     Por devolver
                                 </DropdownItem>
 

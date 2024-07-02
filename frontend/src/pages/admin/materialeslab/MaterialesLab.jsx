@@ -94,13 +94,13 @@ const MaterialesLab = () => {
         <div className='w-full sm:p-5 sm:px-20 p-5'>
             <Toaster richColors />
             <div className="w-full mb-2">
-                <div className="flex justify-between items-center max-w-[900px] m-auto">
-                    <div className="flex w-full gap-10">
+                <div className=" flex sm:flex-row flex-col justify-between items-center max-w-[900px] m-auto gap-3">
+                    <div className="flex sm:flex-row flex-col w-full sm:gap-10 gap-3 items-center">
                         <p className="text-center text-2xl font-bold ">Materiales laboratorio</p>
-
                         <Input
                             isClearable
                             className="w-full sm:max-w-[300px]"
+
                             placeholder="Buscar"
                             startContent={<CiSearch />}
                             value={filterValue}
@@ -108,9 +108,9 @@ const MaterialesLab = () => {
                             onChange={onSearchChange}
                         />
                     </div>
-                    <div className="flex items-center justify-between gap-5">
+                    <div className="flex w-full sm:w-auto items-center justify-end gap-3">
                         <Dropdown>
-                            <DropdownTrigger className="hidden sm:flex">
+                            <DropdownTrigger>
                                 <Button variant="flat">
                                     <Tooltip content="Ordenar">
                                         <span>

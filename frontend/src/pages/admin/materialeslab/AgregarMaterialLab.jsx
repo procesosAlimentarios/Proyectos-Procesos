@@ -11,7 +11,7 @@ function AgregarMaterialLab() {
         try {
             console.log(values)
             const data = {
-                ...values,
+                nombre: values.nombre.toUpperCase(),
                 existencias: parseInt(values.existencias)
             }
             const res = await createMaterialLab(data);
@@ -78,8 +78,8 @@ function AgregarMaterialLab() {
 
                                 },
                                 max: {
-                                    value: 50,
-                                    message: "La cantidad maxima es 50"
+                                    value: 100,
+                                    message: "La cantidad maxima es 100"
                                 }
                             })
                             } />

@@ -1,9 +1,20 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Post, Req, Request, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Post, Req , Res, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login-dto';
 import { AuthGuard, AuthGuardAdmin } from './auth.guard';
-import { Response } from 'express';
+import { Request, Response } from 'express';
 import { Roles } from './decorators/roles.decorator';
+import { RolesGuard } from './roles/roles.guard';
+import { Role } from './roles/role.enum';
+import { Auth } from './decorators/auth.decorator';
+
+interface RequestWithUser extends Request {
+  user:{
+    sub: string;
+    role: string;
+  }
+}
+
 
 @Controller('auth')
 export class AuthController {
@@ -19,25 +30,28 @@ export class AuthController {
     return result;
   }
 
-  @Post('login-admin')
-  @HttpCode(HttpStatus.OK)
-  async loginAdmin(@Body() loginDto: LoginDto, @Res({ passthrough: true }) res: Response) {
-    const result = await this.authService.loginAdmin(loginDto);
-    res.setHeader('Authorization', `Bearer ${result.token}`);
-    return result;
-  }
+  // @Post('login-admin')
+  // @HttpCode(HttpStatus.OK)
+  // async loginAdmin(@Body() loginDto: LoginDto, @Res({ passthrough: true }) res: Response) {
+  //   const result = await this.authService.loginAdmin(loginDto);
+  //   res.setHeader('Authorization', `Bearer ${result.token}`);
+  //   return result;
+  // }
 
   @Get("prueba")
-  @Roles("admin")
-  @UseGuards(AuthGuard)
-  async prueba(){
-    return "Funciona"
+  // @Roles(Role.ADMIN)
+  // @UseGuards(AuthGuard,RolesGuard)
+  @Auth(Role.ALUMNO)
+  async prueba(
+    @Req()req: RequestWithUser,
+  ){
+    return this.authService.profile(req.user);
   }
 
   @Get("verifyToken")
   @UseGuards(AuthGuard)
   async verifyUser(
-    @Request() request,
+    @Req() request,
   ) {
     return this.authService.verifyToken(request.user);
   }

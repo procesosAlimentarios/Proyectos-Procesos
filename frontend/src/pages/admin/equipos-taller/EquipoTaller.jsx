@@ -100,12 +100,12 @@ const EquiposTaller = () => {
         <div className='w-full sm:p-5 sm:px-20 p-5'>
             <Toaster richColors />
             <div className="w-full mb-2">
-                <div className="flex justify-between items-center max-w-[900px] m-auto gap-3">
-                    <div className="flex w-full gap-10">
+                <div className="flex md:flex-row flex-col justify-between items-center max-w-[900px] m-auto gap-3">
+                    <div className="flex md:flex-row flex-col w-full md:gap-10 gap-3 items-center">
                         <p className="text-center text-2xl font-bold ">Equipos Taller</p>
                         <Input
                             isClearable
-                            className="w-full sm:max-w-[300px]"
+                            className="w-full md:max-w-[300px]"
                             placeholder="Buscar"
                             startContent={<CiSearch />}
                             value={filterValue}
@@ -113,9 +113,9 @@ const EquiposTaller = () => {
                             onChange={onSearchChange}
                         />
                     </div>
-                    <div className="flex max-w-[900px] justify-end mx-auto my-2 gap-3">
+                    <div className="flex w-full md:max-w-[900px] justify-end mx-auto my-2 gap-2">
                         <Dropdown>
-                            <DropdownTrigger className="hidden sm:flex">
+                            <DropdownTrigger>
                                 <Button variant="flat">
                                     <Tooltip content="Ordenar">
                                         <span>
@@ -193,21 +193,19 @@ const EquiposTaller = () => {
                                 selectedKeys={new Set([enUso])}
                                 onSelectionChange={(key) => setenUso(Array.from(key).join(""))}
                             >
-                               
-                                    <DropdownItem key={"all"}>
-                                        Todos
-                                    </DropdownItem>
-                                     <DropdownItem key={"true"}>
-                                        En uso
-                                    </DropdownItem>
-                                    <DropdownItem key={"false"}>
-                                        Libre
-                                    </DropdownItem>
+
+                                <DropdownItem key={"all"}>
+                                    Todos
+                                </DropdownItem>
+                                <DropdownItem key={"true"}>
+                                    En uso
+                                </DropdownItem>
+                                <DropdownItem key={"false"}>
+                                    Libre
+                                </DropdownItem>
 
                             </DropdownMenu>
                         </Dropdown>
-                    </div>
-                    <div className="flex items-center justify-between gap-5">
                         <Button className="" variant="flat" onClick={() => navigate("/agregar-equipo-taller")} >
                             <Tooltip content="Agregar">
                                 <span>
@@ -216,6 +214,7 @@ const EquiposTaller = () => {
                             </Tooltip>
                         </Button>
                     </div>
+
                 </div>
 
             </div>
